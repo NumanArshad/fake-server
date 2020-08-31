@@ -1,27 +1,34 @@
 
 const jsonserver = require("json-server")
 const server = jsonserver.create()
-const router = jsonserver.router("https://github.com/NumanArshad/fake-server/blob/master/db.json")
+const router = jsonserver.router("db.json")
 const bodyparser = require("body-parser")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const fs = require("fs")
+const cors=require("cors")
 require("dotenv").config()
 
 const data = JSON.parse(fs.readFileSync("./db.json", "utf8"))
 const secretkey = "kjfnkfnenjbbh"
 server.use(bodyparser.urlencoded({ extended: true }))
 server.use(bodyparser.json())
-
+server.use(cors())
+server.options("*",cors())
 const generateToken = (payload) => {
     return jwt.sign({ user: payload }, secretkey, { expiresIn: '2m' })
 }
 
+const protectedRoutes=[{url:"/api/posts",method:["POST","DELETE"]},{url:"/api/profile",method:["POST","GET","UPDATE","DELETE"]}]
+
 const verifyToken = (req, res, next) => {
-    const { url } = req
-    const protectedRoutes = url.includes("posts")
-    /////////
-    if (protectedRoutes) {
+    const { url,method } = req
+  
+    const methodProtect=protectedRoutes.find((route)=>route.url===url)
+    const protectedRoute =methodProtect && methodProtect.method.find((meth)=>meth===method)
+    // url.includes("posts")
+       /////////
+    if (protectedRoute) {
         const bearer = req.headers['authorization']
         try {
             const token = bearer.split(' ')[1]
@@ -31,8 +38,11 @@ const verifyToken = (req, res, next) => {
                     res.status(401).send({ token_error: "unAuthorized" })
                     return
                 }
-                //    res.status(200).send({ data: authdata })
+                   res.status(200).send({ data: authdata })
+              
                 next()  // not to refersh if 
+
+
             })
         }
         catch{
@@ -53,10 +63,12 @@ const isUserExist = (email) => {
 
 server.post('/auth/login', async (req, res) => {
     const { email, password } = req.body
-
     const user = isUserExist(email)
+    
     if (!user) { res.status(200).send({ login_status: "email not found" }); return }
     ////compare
+    console.log(email,password,user.password)
+
     const result = await bcrypt.compare(password, user.password)
     if (result) {
         console.log(result)
@@ -73,7 +85,7 @@ server.post('/auth/register', async (req, res) => {
     if (user) { res.status(200).send({ signup_status: "email exist already" }); return }
     const hashpassword = await bcrypt.hash(password, 10)
     if (hashpassword) {
-        await data.users.push({ id: data.users.length + 1, email: email, password: hashpassword })
+        await data.users.push({ ...req.body ,id: data.users.length + 1, email: email, password: hashpassword})
         fs.writeFile("./db.json", JSON.stringify(data), (err) => {
             if (err) {
                 console.log("file write errr" + err)
@@ -88,6 +100,7 @@ server.post('/auth/register', async (req, res) => {
 })
 
 server.use(verifyToken)
+
 server.use('/api', router)
 server.listen(4000, () => {
     console.log("json server running on port 4000")

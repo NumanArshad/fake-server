@@ -1,1 +1,66 @@
-{"users":[{"email":"numanuet311@gmail.com","password":"$2a$10$E8ujY.286V63ej/pjjffZexdVHSauCGiYFUDmHm4JPRNrUqxk1Lie","id":1},{"email":"ali123@gmail.com","password":"123456","id":2},{"id":5,"email":"afshanarsha278@gmail.com","password":"$2b$10$Epf1kV9HmZDgoFKCD8lQzOEF9hK8YWs4BECqHPh3EKEMEZGrbEGNa"},{"id":4,"email":"afsharsha2mil.com","password":"$2b$10$qVNnI00dzT.y7GO/9CcZU.o8wgQHzIFx1ggYuJeHjFgMEjJTc4iZi"},{"id":5,"email":"afsharsh2mil.com","password":"$2b$10$N71MwvDdM6mPbYYBaILm7euQmNpRjCBuc3qXmXqI4JPkCJlfAd/kS"},{"id":6,"email":"afsharsh2mil.cm","password":"$2b$10$eHRKe4Hph/fVjkt0RuvGWOrSZjmLZ/QXmZlxI/pqVPOYsDr0RVM62"}],"posts":[{"id":1,"title":"json-server","userId":1},{"title":"hahaha","userId":2,"id":2},{"title":"usamfeger","id":3}],"comments":[{"id":1,"body":"some comment","postId":1}],"profile":{"name":"typicode"}}
+{
+    "users": [
+        {
+            "email": "numanuet311@gmail.com",
+            "password": "$2a$10$E8ujY.286V63ej/pjjffZexdVHSauCGiYFUDmHm4JPRNrUqxk1Lie",
+            "id": 1
+        },
+        {
+            "email": "ali123@gmail.com",
+            "password": "123456",
+            "id": 2
+        },
+        {
+            "id": 5,
+            "email": "afshanarsha278@gmail.com",
+            "password": "$2b$10$Epf1kV9HmZDgoFKCD8lQzOEF9hK8YWs4BECqHPh3EKEMEZGrbEGNa"
+        },
+        {
+            "id": 4,
+            "email": "afsharsha2mil.com",
+            "password": "$2b$10$qVNnI00dzT.y7GO/9CcZU.o8wgQHzIFx1ggYuJeHjFgMEjJTc4iZi"
+        },
+        {
+            "id": 5,
+            "email": "afsharsh2mil.com",
+            "password": "$2b$10$N71MwvDdM6mPbYYBaILm7euQmNpRjCBuc3qXmXqI4JPkCJlfAd/kS"
+        },
+        {
+            "id": 6,
+            "email": "afsharsh2mil.cm",
+            "password": "$2b$10$eHRKe4Hph/fVjkt0RuvGWOrSZjmLZ/QXmZlxI/pqVPOYsDr0RVM62"
+        },
+        {
+            "username": "Numan Arshad",
+            "email": "hamza123@gmail.com",
+            "password": "$2b$10$98SoRg8XbKUyYlCPilVTUOFr1/QOSD/H0SPNWdFccVMc6Riab19uq",
+            "id": 7
+        }
+    ],
+    "posts": [
+        {
+            "id": 1,
+            "title": "json-server",
+            "userId": 1
+        },
+        {
+            "title": "hahaha",
+            "userId": 2,
+            "id": 2
+        },
+        {
+            "title": "usamfeger",
+            "id": 3
+        }
+    ],
+    "comments": [
+        {
+            "id": 1,
+            "body": "some comment",
+            "postId": 1
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    }
+}
