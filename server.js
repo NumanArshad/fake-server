@@ -1,11 +1,12 @@
 
 const jsonserver = require("json-server")
 const server = jsonserver.create()
-const router = jsonserver.router("db.json")
+const router = jsonserver.router("https://github.com/NumanArshad/fake-server/blob/master/db.json")
 const bodyparser = require("body-parser")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const fs = require("fs")
+require("dotenv").config()
 
 const data = JSON.parse(fs.readFileSync("./db.json", "utf8"))
 const secretkey = "kjfnkfnenjbbh"
