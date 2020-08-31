@@ -1,0 +1,31 @@
+{
+  "name": "fakeserver",
+  "version": "1.0.0",
+  "description": "fake server for quick prototype development",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NumanArshad/fake-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NumanArshad/fake-server/issues"
+  },
+  "homepage": "https://github.com/NumanArshad/fake-server#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "faker": "^5.1.0",
+    "fs": "0.0.1-security",
+    "json-server": "^0.16.1",
+    "json-server-auth": "^2.0.2",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
